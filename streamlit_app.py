@@ -33,8 +33,7 @@ load_dotenv()
 # Access env variables
 openai_api_key = os.getenv("OPENAI_API_KEY")
 langsmith_api_key = os.getenv("LANGSMITH_API_KEY")
-
-DB_CONNECTION_STRING="postgresql://neondb_owner:npg_CeWFPzx08Tac@ep-still-salad-a6zn0w5u-pooler.us-west-2.aws.neon.tech/neondb?sslmode=require"
+DB_CONNECTION_STRING = os.getenv("DATABASE_URL")
 
 # Embedding model
 embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
