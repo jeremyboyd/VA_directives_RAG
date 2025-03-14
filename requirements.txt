@@ -3,7 +3,6 @@ aiosignal==1.3.2
 altair==5.0.1
 annotated-types==0.7.0
 anyio==4.8.0
-arrow-cpp==19.0.0
 asgiref==3.8.1
 asttokens==3.0.0
 attrs==25.1.0
