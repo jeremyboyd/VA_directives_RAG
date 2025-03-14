@@ -11,6 +11,7 @@ langgraph-checkpoint
 langgraph-prebuilt
 langgraph-sdk
 langsmith
+sqlite3==3.45
 streamlit
 streamlit-chat
 watchdog
