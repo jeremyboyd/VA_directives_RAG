@@ -6,6 +6,7 @@
 # Packages
 from dotenv import load_dotenv
 import os
+import sys
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -15,6 +16,13 @@ from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 import chromadb
 
+# Force use of pysqlite3
+try:
+    import pysqlite3
+    sys.modules["sqlite3"] = pysqlite3  # Override sqlite3 with pysqlite3
+except ImportError:
+    print("pysqlite3 is not installed. Add it to requirements.txt")
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -22,6 +30,8 @@ load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 langsmith_api_key = os.getenv("LANGSMITH_API_KEY")
 DB_CONNECTION_STRING = os.getenv("DATABASE_URL")
+
+
 
 # PDF directory
 pdf_dir = "pdf/"

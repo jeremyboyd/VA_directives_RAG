@@ -4,9 +4,15 @@
 # stores chunks in a vector store, implements a RAG-chatbot that uses vector
 # store to respond to queries.
 
+# Not clear that this is doing retrieval when deployed on my own machine, let alone to streamlit cloud.
+
+# OpenAI has vector store storage built into their dashboard. Can that help?
+
+
 # Packages
 from dotenv import load_dotenv
 import os
+import sys
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -26,6 +32,13 @@ from langchain_openai import ChatOpenAI
 from langchain.chat_models import init_chat_model
 from langchain_openai import OpenAIEmbeddings
 import chromadb
+
+# Force use of pysqlite3
+try:
+    import pysqlite3
+    sys.modules["sqlite3"] = pysqlite3  # Override sqlite3 with pysqlite3
+except ImportError:
+    print("pysqlite3 is not installed. Add it to requirements.txt")
 
 # Load environment variables from .env file
 load_dotenv()
