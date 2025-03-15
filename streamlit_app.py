@@ -39,6 +39,7 @@ try:
     sys.modules["sqlite3"] = pysqlite3  # Override sqlite3 with pysqlite3
 except ImportError:
     print("pysqlite3 is not installed. Add it to requirements.txt")
+import sqlite3
 
 # Load environment variables from .env file
 load_dotenv()
